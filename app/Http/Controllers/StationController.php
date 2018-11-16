@@ -61,7 +61,7 @@ class StationController extends Controller
 
         Mapper::map($station->lat, $station->long,['zoom' => 15]);
 
-        if(!empty($day)){
+        if(isset($day)){
             $prediction = DB::table('historical_stations')
                     ->select('historical_stations.*',DB::raw('AVG(historical_stations.free_bikes) AS average_free_bikes'))
                     ->groupBy('weather_summary')
@@ -72,8 +72,6 @@ class StationController extends Controller
         } else {
             $prediction = [];
         }
-
-        return $prediction;
         
         $summary = DB::table('historical_stations')
                     ->select('historical_stations.*',DB::raw('AVG(historical_stations.free_bikes) AS average_free_bikes'))
