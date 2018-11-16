@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 
-    <div class="col-8">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-12 mb-5">
                 <div class="card">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <div class="card">
                     <div class="card-header d-flex w-100 justify-content-between head-style">
                         <div style="font-size:1rem">Station Bike Predictor.</div>
@@ -24,24 +24,28 @@
                     </div>
                     <div class="card-body">
                             @if(count($prediction)>0)
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Weather Type</th>
-                                            <th>Day</th>
-                                            <th>Hour</th>
-                                            <th>Average Bikes</th>
-                                        </tr>
-                                    </thead>
-                                    @foreach($prediction as $predict)
-                                        <tr>
-                                            <td>{{$predict->weather_summary}}</td>
-                                            <td>{{$predict->date_day_num_rep}}</td>
-                                            <td>{{$predict->date_hour}}</td>
-                                            <td>{{number_format($predict->average_free_bikes,0)}}</td>
-                                        </tr>
-                                    @endforeach
-                                </table>
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Weather Type</th>
+                                                <th>Day</th>
+                                                <th>Hour</th>
+                                                <th>Average Bikes</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach($prediction as $predict)
+                                            <tr>
+                                                <td>{{$predict->weather_summary}}</td>
+                                                <td>{{$predict->date_day_num_rep}}</td>
+                                                <td>{{$predict->date_hour}}</td>
+                                                <td>{{number_format($predict->average_free_bikes,0)}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+
                             @endif
 
                         <form action="/city/{{$station->city}}/station/{{$station->id}}/predict" method="post">
@@ -97,24 +101,28 @@
         </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-md-4 mb-5">
         <div class="card">
             <div class="card-header">{{$station->name}}, Average Free Bikes</div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Weather Type</th>
-                            <th>Average Bikes</th>
-                        </tr>
-                    </thead>
-                    @foreach($summary as $weather)
-                        <tr>
-                            <td>{{$weather->weather_summary}}</td>
-                            <td>{{number_format($weather->average_free_bikes,0)}}</td>
-                        </tr>
-                    @endforeach
-                </table>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Weather Type</th>
+                                <th>Average Bikes</th>
+                            </tr>
+                        </thead>
+                        @foreach($summary as $weather)
+                            <tr>
+                                <td>{{$weather->weather_summary}}</td>
+                                <td>{{number_format($weather->average_free_bikes,0)}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

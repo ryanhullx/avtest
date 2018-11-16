@@ -25,14 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         /**
-        * * Request Latest Station API Data Every Minuite, and over write stored data.
+        * * Request Latest Station API Data Every Ten Minuites.
         */
-        $schedule->call('App\Http\Controllers\ApiDataController@saveStationsLatestDataApi')->everyMinute();
-
-        /**
-        * * Request and store Station API Data Every Ten Minutes
-        */
-        $schedule->call('App\Http\Controllers\ApiDataController@saveStationsHistoricalDataApi')->everyTenMinutes();
+        $schedule->call('App\Http\Controllers\ApiDataController@getLatestCityBikesStations')->everyTenMinutes();
     }
 
     /**

@@ -103,18 +103,22 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="stationData">
-                    <thead>
-                        <tr>                            
-                            <td>City</td>
-                            <td>Free Bikes</td>
-                            <td>Empty Slots</td>
-                            <td>Weather</td>
-                            <td>°C</td>
-                            <td>use</td>
-                        </tr>
-                    </thead>
-                </table>
+                
+                <div class="table-responsive">
+                    <table class="table" id="stationData">
+                        <thead>
+                            <tr>                            
+                                <td>City</td>
+                                <td>Free Bikes</td>
+                                <td>Empty Slots</td>
+                                <td>Weather</td>
+                                <td>°C</td>
+                                <td>use</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

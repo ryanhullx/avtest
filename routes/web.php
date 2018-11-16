@@ -29,3 +29,4 @@ Route::get('/data/stations/{city}', 'StationController@stationData');
 
 Route::post('/journey/plan', 'JourneyController@journyPlanner');
 Route::get('/journey/{from}/{to}/{day}/{hour}', 'JourneyController@jounryPlanView');
+

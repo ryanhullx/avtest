@@ -15,18 +15,20 @@
         <div class="card">
             <div class="card-header"><h3>Cities</h3></div>
             <div class="card-body">
-                <table class="table" id="cityData">
-                    <thead>
-                        <tr>                            
-                            <td>City</td>
-                            <td>Countdy</td>
-                            <td>lat</td>
-                            <td>long</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                </table>
+                
+                <div class="table-responsive">
+                    <table class="table" id="cityData">
+                        <thead>
+                            <tr>                            
+                                <td>City</td>
+                                <td>Country</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
@@ -47,8 +49,6 @@
 			columns: [
 				{data: 'city'},
 				{data: 'country'},
-				{data: 'lat'},
-				{data: 'long'},
 				{data: 'action', searchable: false},
 				{data: 'use', searchable: false}
 			]

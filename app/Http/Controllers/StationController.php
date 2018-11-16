@@ -49,7 +49,7 @@ class StationController extends Controller
         
         return $datatables->of($stations)->addColumn('use',
                                             function ($station) {
-                                                return '<a href="city/'.$station->city.'/station/' . $station->id . '/" class="btn btn-primary btn-block btn-sm">Station Data</a>';                                            
+                                                return '<a href="/city/'.$station->city.'/station/' . $station->id . '/" class="btn btn-primary btn-block btn-sm">Station Data</a>';                                            
                                             })
                                             ->rawColumns(['use'])
                                             ->make(true);
@@ -61,7 +61,7 @@ class StationController extends Controller
 
         Mapper::map($station->lat, $station->long,['zoom' => 15]);
 
-        if(isset($day)){
+        if(!empty($day)){
             $prediction = DB::table('historical_stations')
                     ->select('historical_stations.*',DB::raw('AVG(historical_stations.free_bikes) AS average_free_bikes'))
                     ->groupBy('weather_summary')
@@ -72,6 +72,8 @@ class StationController extends Controller
         } else {
             $prediction = [];
         }
+
+        return $prediction;
         
         $summary = DB::table('historical_stations')
                     ->select('historical_stations.*',DB::raw('AVG(historical_stations.free_bikes) AS average_free_bikes'))
