@@ -11,10 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/test', 'ApiDataController@getCityBikesNetwork');
+Route::get('/testit', 'ApiDataController@testit');
+Route::get('/stations', 'ApiDataController@getLatestCityBikesStations');
+Route::get('/save','ApiDataController@saveCityBikeStations');
+
+
+
+Route::get('/', 'CityController@index');
+Route::get('/data/cities', 'CityController@cityData');
+Route::get('/alter/{id}/{value}', 'CityController@alterStatus');
+
+
+Route::get('/city/{city}/', 'StationController@index');
+Route::get('/city/{city}/station/{id}/{day?}/{hour?}', 'StationController@stationShow');
+Route::post('/city/{city}/station/{id}/predict', 'StationController@stationPredict');
+Route::get('/data/stations/{city}', 'StationController@stationData');
+
+
+
+Route::post('/journey/plan', 'JourneyController@journyPlanner');
+Route::get('/journey/{from}/{to}/{day}/{hour}', 'JourneyController@jounryPlanView');
