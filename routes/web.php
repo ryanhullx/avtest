@@ -15,13 +15,6 @@
 
 Auth::routes();
 
-Route::get('/test', 'ApiDataController@getCityBikesNetwork');
-Route::get('/testit', 'ApiDataController@testit');
-Route::get('/stations', 'ApiDataController@getLatestCityBikesStations');
-Route::get('/save','ApiDataController@saveCityBikeStations');
-
-
-
 Route::get('/', 'CityController@index');
 Route::get('/data/cities', 'CityController@cityData');
 Route::get('/alter/{id}/{value}', 'CityController@alterStatus');
